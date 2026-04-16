@@ -34,24 +34,45 @@ func main() {
 		fmt.Print("How many tickets would you like to purchase? ")
 		fmt.Scan(&userTickets)
 
-		remainingTickets = remainingTickets - userTickets
-		bookings = append(bookings, firstName + " " + lastName)
+		isValidName := len(firstName) >= 2 && len(lastName) >= 2
+		isValidEmail := strings.Contains(email, "@")
+		isValidUserTickets := userTickets > 0 && userTickets <= remainingTickets
 
-		fmt.Printf("Thank you %v %v for booking %v tickets, kindly find the tickets on your email %v cheers!!!\n", firstName, lastName, userTickets, email)
-		fmt.Printf("%v tickets are remaining for this %v\n", remainingTickets, conferenceName)
+		if isValidName && isValidEmail && isValidUserTickets {
+			remainingTickets = remainingTickets - userTickets
+			bookings = append(bookings, firstName + " " + lastName)
 
-		firstNames := []string{}
+			fmt.Printf("Thank you %v %v for booking %v tickets, kindly find the tickets on your email %v cheers!!!\n", firstName, lastName, userTickets, email)
+			fmt.Printf("%v tickets are remaining for this %v\n", remainingTickets, conferenceName)
 
-		for _, booking := range bookings {
-			var name = strings.Fields(booking)
-			firstNames = append(firstNames, name[0])
-		}
+			firstNames := []string{}
 
-		fmt.Printf("All the bookings so far are: %v\n", firstNames)
+			for _, booking := range bookings {
+				var name = strings.Fields(booking)
+				firstNames = append(firstNames, name[0])
+			}
 
-		if remainingTickets == 0 {
-			fmt.Println("All tickets are booked, come back next month")
-			break
+			if remainingTickets == 0 {
+				fmt.Println("All tickets are booked, come back next month")
+				break
+			}
+
+			fmt.Printf("All the bookings so far are: %v\n", firstNames)
+
+		} else {
+
+			if !isValidName {
+				fmt.Println("Enter correct names: Names must be more than 2 characters")
+			}
+
+			if !isValidEmail {
+				fmt.Println("Enter correct email address")
+			}
+			
+			if !isValidUserTickets {
+				fmt.Println("Sorry!! Available tickets are %v", remainingTickets)
+			}
 		}
 	}
+	fmt.Println("Your slot has been booked succefully")
 }
