@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ASCII Art Web</title>
+    <style>
+        pre { background: #f4f4f4; padding: 20px; font-family: monospace; }
+        :root {
+    --primary: #1D9E75;
+    --primary-hover: #15805d;
+    --bg: #0d1117;
+    --card-bg: #161b22;
+    --text: #e6edf3;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    min-height: 100vh;       /* Ensure body is full screen height */
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid #30363d;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: fadeIn 0.8s ease-out; /* Page entry animation */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    color: var(--text);
+    padding: 15px;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.2);
+}
+
+.generate-btn {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 1rem;
+}
+
+.generate-btn:hover {
+    background: var(--primary-hover);
+    transform: scale(1.02); /* Slight grow animation */
+}
+
+.generate-btn:active {
+    transform: scale(0.98); /* Slight shrink on click */
+}
+
+.result-container {
+    margin-top: 2rem;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #30363d;
+}
+
+.result-header {
+    background: #21262d;
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto; /* Allow horizontal scroll for wide art */
+    color: var(--primary);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    line-height: 1.2;
+}
+        
+    </style>
+</head>
+<!-- inside templates/index.html -->
+<body>
+    <div class="main-container">
+        <div class="card">
+            <h1>ASCII <span>Art</span> Web</h1>
+            
+            <form action="/ascii-art" method="POST">
+                <textarea name="text" placeholder="Type something incredible..." required></textarea>
+                
+                <div class="banner-selector">
+                    <label class="radio-container">
+                        <input type="radio" name="banner" value="standard">
+                        <span class="checkmark">Standard</span>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="banner" value="shadow">
+                        <span class="checkmark">Shadow</span>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="banner" value="thinkertoy">
+                        <span class="checkmark">Thinkertoy</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="generate-btn">Generate Art</button>
+            </form>
+
+            {{if .Result}}
+            <div class="result-container">
+                <div class="result-header">Output</div>
+                <pre>{{.Result}}</pre>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</body>
+</html>
