@@ -1,0 +1,122 @@
+:root {
+    --primary: #1D9E75;
+    --primary-hover: #15805d;
+    --bg: #85ace6;
+    --card-bg: #161b22;
+    --text: #e6edf3;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: monospace;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 5px solid #fff;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgb(0, 0, 0, 0.5);
+    animation: fadeIn 2.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    background: #ffffff;
+    border: 2px solid #111;
+    border-radius: 8px;
+    color: black;
+    padding: 15px;
+    font-size: 1.5rem;
+    resize: vertical;
+    transition: border-color 03s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.2);
+}
+
+.generate-button {
+    width: 100%;
+    background: rgb(30, 26, 230);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 1.1rem;
+    
+}
+
+.generate-button:hover {
+    background: var(--primary-hover);
+    transform: scale(1.02);
+    transition: 1s;
+}
+
+.generate-button:active {
+    transform: scale(0.98);
+}
+
+.result-container {
+    margin-top: 2rem;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #30363d;
+}
+
+.result-header {
+    background: #21262d;
+    padding: 8px 15px;
+    font-size: 1.3rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+pre {
+    margin: 0;
+    padding: 40px;
+    overflow-x: auto;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: bold;
+} 
+
+h1 {
+    text-align: center;
+    margin-bottom: 55px;
+    color: cyan;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.banner-selector {
+    margin: 15px auto 15px auto;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 15px;
+}

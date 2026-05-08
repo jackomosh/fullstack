@@ -14,10 +14,15 @@ type PageData struct {
 }
 
 func main() {
+
+	fs := http.FileServer(http.Dir("static"))
+    http.Handle("/static/", http.StripPrefix("/static/", fs))
+
 	// GET route for the home page
 	http.HandleFunc("/", homeHandler)
+	
 	// POST route for processing arttemplate
-	http.HandleFunc("/ascii-art", asciiHandler)
+	http.HandleFunc("/ascii", asciiHandler)
 
 	fmt.Println("Server starting at http://localhost:8080")
 	err := http.ListenAndServe(":8080", nil)
@@ -60,7 +65,6 @@ func asciiHandler(w http.ResponseWriter, r *http.Request) {
         }
         return
     }
-
     renderTemplate(w, "index.html", PageData{Result: result})
 }
 

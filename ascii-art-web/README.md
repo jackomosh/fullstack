@@ -1,18 +1,19 @@
-# 📟 ASCII Art Generator
-> A Go application that transforms GUI input into stylized ASCII art using pre-configured banner templates.
+# 📟 ASCII Art Web
+> A Go-based web application that transforms user input into stylized ASCII art via a graphical user interface (GUI).
 
 ---
 
 ### 📋 Description
-Developed exclusively in **Go** using standard packages, the project features a modular architecture. It takes input to graphic representations using ASCII characters based on specific banner templates. To test locally, open port 8080 on your local machine
+This project is a web-based implementation of the ASCII Art generator. It allows users to input text, select a banner style (**Standard**, **Shadow**, or **Thinkertoy**), and render the result directly in their browser. The server is built from scratch using Go's `net/http` and `html/template` standard packages.
 
-### 🏗️ Architecture
-| Name | Role |
-| :--- | :--- |
-| `Jack` | Lead
+### 👥 Authors
+*   **Clinton Amayo** - *Group Lead*
+*   **Martin Wawire**
+*   **Jack Omondi**
 
 ---
 
 ### 🚀 Usage
-```bash
-$ go run .
+1.  **Start the server:**
+    ```bash
+    go run .
