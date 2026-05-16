@@ -7,4 +7,5 @@ func main() {
 	wordTwo := "World!"
 	concat := wordOne + " " + wordTwo
 	fmt.Println(concat)
+	fmt.Println(len(concat))
 }
