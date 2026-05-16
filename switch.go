@@ -9,5 +9,7 @@ func main() {
 		fmt.Println("You cannot vote")
 	case age >= 18:
 		fmt.Println("You can vote")
+	default:
+		fmt.Println("Error")
 	}
 }
