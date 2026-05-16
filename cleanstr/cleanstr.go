@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	// 1. Check if number of arguments is exactly 1 (plus the program name)
+
 	if len(os.Args) != 2 {
-		fmt.Println()
+		fmt.Println("Expeted: 1 Input")
 		return
 	}
 
@@ -17,9 +17,7 @@ func main() {
 	currentWord := ""
 
 	for _, ch := range str {
-		// A "word" is delimited by space OR tab
 		if ch == ' ' || ch == '\t' {
-			// Only append if currentWord isn't empty (avoids multiple spaces)
 			if currentWord != "" {
 				words = append(words, currentWord)
 				currentWord = ""
@@ -29,23 +27,20 @@ func main() {
 		}
 	}
 
-	// 2. Don't forget the last word if the string didn't end in a space
 	if currentWord != "" {
 		words = append(words, currentWord)
 	}
 
-	// 3. Handle the "no words to display" case
 	if len(words) == 0 {
 		fmt.Println()
 		return
 	}
 
-	// 4. Join the words with exactly one space
 	for i, word := range words {
 		fmt.Print(word)
-		if i < len(words)-1 {
+		if i < len(words) {
 			fmt.Print(" ")
 		}
 	}
-	fmt.Println() // Final newline
+	fmt.Println()
 }

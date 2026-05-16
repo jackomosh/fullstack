@@ -22,7 +22,7 @@ func main() {
 		if string(ch) == oldChar {
 			res += newChar
 		} else {
-		res += string(ch)
+			res += string(ch)
 		}
 	}
 	fmt.Println(res)

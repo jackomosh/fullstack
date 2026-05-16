@@ -10,7 +10,7 @@ func LastWord(s string) string{
 		end--
 	}
 
-	if end == len(s) {
+	if len(s) == 0 {
 		return "\n"
 	}
 
@@ -21,6 +21,8 @@ func LastWord(s string) string{
 	}
 
 	return s[start+1:end+1] + "\n"
+
+
 }
 
 func main() {

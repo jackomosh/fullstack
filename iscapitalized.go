@@ -17,7 +17,7 @@ func IsCapitalized(s string) bool {
 			continue
 		}
 
-		if startWord {
+		for startWord {
 			if ch >= 'a' && ch <= 'z' {
 				return false
 			}

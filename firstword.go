@@ -10,7 +10,7 @@ func FirstWord(s string) string {
 		start++
 	}
 
-	if start == len(s) {
+	if len(s) == 0 {
 		return "\n"
 	}
 
@@ -21,8 +21,6 @@ func FirstWord(s string) string {
 	}
 
 	return s[start:end] + "\n"
-
-
 
 }
 

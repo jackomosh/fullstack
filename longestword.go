@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-func longestWord(str string) string{
+func longestWord(str string) string {
 	if len(str) == 0 {
 		return ""
 	}
@@ -15,7 +15,6 @@ func longestWord(str string) string{
 	longWord := ""
 	for _, word := range words {
 		cleaned := re.ReplaceAllString(word, "")
-
 		if len(cleaned) > len(longWord) {
 			longWord = cleaned
 		}
