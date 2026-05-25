@@ -1,4 +1,4 @@
-# 🚀🚀 **My Programming Journey as an Aspiring Developer**
+# 🚀 **Begginner TO Pro**
 
-## 💻 Appretice at zone01 Kisumu April 2026 to April 2027
+## 💻 Apprentice at zone01 Kisumu - to April 2027
 
