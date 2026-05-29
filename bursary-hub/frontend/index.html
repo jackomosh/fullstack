@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>Gateway Authentication Portal | BursaryFund</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .auth-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 70px);
+            padding: 2rem 1rem;
+        }
+        .auth-card { max-width: 550px; width: 100%; padding: 3rem 2.5rem; text-align: center; }
+        .auth-card h2 { font-size: 1.75rem; color: var(--ifc-blue); margin-bottom: 0.5rem; font-weight: 800; }
+        .auth-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; }
+
+        .role-selector-stack { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+        .role-option {
+            display: flex;
+            align-items: center;
+            padding: 1.25rem;
+            border: 2px solid rgba(0, 47, 108, 0.1);
+            border-radius: var(--radius);
+            cursor: pointer;
+            text-align: left;
+            transition: var(--transition);
+            background: white;
+        }
+        .role-option:hover { border-color: var(--ifc-accent); background: rgba(0, 148, 168, 0.02); }
+        .role-option.active { border-color: var(--ifc-blue); background: rgba(0, 47, 108, 0.04); box-shadow: 0 0 0 4px rgba(0, 47, 108, 0.05); }
+        .role-icon { font-size: 2.25rem; margin-right: 1.25rem; }
+        .role-meta h4 { color: var(--ifc-blue); font-size: 1.05rem; font-weight: 700; }
+        .role-meta p { font-size: 0.85rem; margin-bottom: 0; margin-top: 0.25rem; line-height: 1.4; }
+
+        .mode-tabs { display: flex; border-bottom: 2px solid rgba(0, 47, 108, 0.1); margin-bottom: 2rem; }
+        .mode-tab { flex: 1; padding: 1rem; font-weight: 700; color: #64748b; cursor: pointer; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; transition: var(--transition); }
+        .mode-tab.active { color: var(--ifc-blue); border-bottom: 3px solid var(--ifc-blue); margin-bottom: -2px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="brand">← Return to Overview Profile</a>
+        </div>
+    </nav>
+
+    <div class="auth-wrapper">
+        <div class="glass-panel auth-card">
+            <h2>System Identity Access</h2>
+            <p>Specify your node context parameters below to complete verification[cite: 20].</p>
+
+            <div id="roleSelectionScreen">
+                <div class="role-selector-stack">
+                    <div class="role-option" data-role="grantor">
+                        <div class="role-icon">🏛️</div>
+                        <div class="role-meta">
+                            <h4>Grantor Identity Control</h4>
+                            <p>Manage funding pools, map student rosters, and run real-time audit logs[cite: 18, 58].</p>
+                        </div>
+                    </div>
+                    <div class="role-option" data-role="beneficiary">
+                        <div class="role-icon">📱</div>
+                        <div class="role-meta">
+                            <h4>Beneficiary Student Interface</h4>
+                            <p>Check allocation status, trace parameters, and co-sign dynamic claims via SMS[cite: 28, 66].</p>
+                        </div>
+                    </div>
+                    <div class="role-option" data-role="institution">
+                        <div class="role-icon">🏫</div>
+                        <div class="role-meta">
+                            <h4>Institution Ledger Node</h4>
+                            <p>Publish Fee Masters, authenticate registration parameters, and issue payment claims[cite: 8, 63].</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="proceedToAuthBtn" class="btn btn-primary" disabled>Proceed to Access Form</button>
+            </div>
+
+            <div id="credentialAuthScreen" class="hidden">
+                <div class="mode-tabs">
+                    <div class="mode-tab active" id="tabLogin" data-mode="login">Authorized Log In</div>
+                    <div class="mode-tab" id="tabSignUp" data-mode="signup">System Enrollment</div>
+                </div>
+
+                <form id="identityForm" novalidate>
+                    <div id="formFieldsContainer"></div>
+                    <button type="submit" id="authSubmitBtn" class="btn btn-primary" style="margin-top: 1.5rem; width:100%;">Execute Access Request</button>
+                </form>
+                <button id="resetNodeViewBtn" class="btn" style="background:none; color:#64748b; text-transform:none; font-size:0.85rem; margin-top:1rem;">➔ Alter Selected Identity Class</button>
+                <div id="authFeedback" class="feedback-msg"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/auth.js"></script>
+=======
+    <title>BursaryHub - Free, Fraud-Proof Scholarship Disbursement for Kenya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Section 1: Top Navigation Bar -->
+    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-indigo-600">BursaryHub</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative group">
+                        <button class="px-4 py-2 text-gray-700 hover:text-indigo-600">Login ▼</button>
+                        <div class="absolute right-0 w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block">
+                            <a href="grantor/dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Donor Login</a>
+                            <a href="institution/dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">School Login</a>
+                            <a href="beneficiary/portal.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Student Login</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <button class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Sign Up ▼</button>
+                        <div class="absolute right-0 w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Donor Sign Up</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">School Sign Up</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Student Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="grantor/dashboard.html" class="block px-4 py-2 text-gray-700">Donor Login</a>
+            <a href="institution/dashboard.html" class="block px-4 py-2 text-gray-700">School Login</a>
+            <a href="beneficiary/portal.html" class="block px-4 py-2 text-gray-700">Student Login</a>
+        </div>
+    </nav>
+
+    <!-- Section 2: Hero Section -->
+    <section class="pt-24 pb-12 bg-gradient-to-r from-indigo-600 to-purple-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Free, Fraud-Proof Scholarship Disbursement for Kenya</h1>
+            <p class="text-xl text-indigo-100 mb-8">Money moves only after all parties confirm the same amount</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="location.href='grantor/dashboard.html'" class="px-8 py-3 bg-white text-indigo-600 rounded-md font-semibold hover:bg-gray-100">Get Started as a Donor</button>
+                <button onclick="document.getElementById('how-it-works').scrollIntoView()" class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-indigo-600">Learn How It Works</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Trust Badges -->
+    <section class="py-8 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="text-center p-4">
+                    <div class="text-3xl mb-2">🆓</div>
+                    <span class="text-sm font-medium">Free for Schools & Students</span>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-3xl mb-2">💯</div>
+                    <span class="text-sm font-medium">1% Fee Only on Success</span>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-3xl mb-2">🔗</div>
+                    <span class="text-sm font-medium">Blockchain Secured</span>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-3xl mb-2">📲</div>
+                    <span class="text-sm font-medium">Works with M-Pesa</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Problem Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-2">THE PROBLEM</h2>
+            <p class="text-center text-gray-600 mb-8">Billions of shillings never reach students</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="text-3xl font-bold text-red-600 mb-2">20-30%</div>
+                    <span class="text-gray-600">Lost to fraud & leakage</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="text-3xl font-bold text-yellow-600 mb-2">7-14 days</div>
+                    <span class="text-gray-600">Bank transfer delays</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="text-3xl font-bold text-gray-400 mb-2">0%</div>
+                    <span class="text-gray-600">Visibility for donors</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: How It Works -->
+    <section id="how-it-works" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl mb-4">👛</div>
+                    <h3 class="text-xl font-semibold mb-2">Donor Creates Scholarship</h3>
+                    <p class="text-gray-600">Donor defines eligibility & deposits funds</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-4">✅</div>
+                    <h3 class="text-xl font-semibold mb-2">Three-Way Verification</h3>
+                    <p class="text-gray-600">Student, school & fee master confirm amount</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-4">⚡</div>
+                    <h3 class="text-xl font-semibold mb-2">Instant Disbursement</h3>
+                    <p class="text-gray-600">OTP approval sends money instantly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Who It's For -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-8">Who It's For</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="text-4xl mb-4">🎁</div>
+                    <h3 class="text-lg font-semibold mb-4">For Donors</h3>
+                    <p class="text-gray-600 mb-4">Create scholarships & track impact</p>
+                    <button onclick="location.href='grantor/dashboard.html'" class="px-4 py-2 bg-indigo-600 text-white rounded-md">Donor Login</button>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="text-4xl mb-4">🏫</div>
+                    <h3 class="text-lg font-semibold mb-4">For Schools</h3>
+                    <p class="text-gray-600 mb-4">Publish fee master & get paid instantly</p>
+                    <button onclick="location.href='institution/dashboard.html'" class="px-4 py-2 bg-indigo-600 text-white rounded-md">School Login</button>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="text-4xl mb-4">👨‍🎓</div>
+                    <h3 class="text-lg font-semibold mb-4">For Students</h3>
+                    <p class="text-gray-600 mb-4">Apply for scholarships & approve via OTP</p>
+                    <button onclick="location.href='beneficiary/portal.html'" class="px-4 py-2 bg-indigo-600 text-white rounded-md">Student Login</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Key Features -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-8">Key Features</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center p-4">
+                    <div class="text-2xl mb-2">✅ 3-Way Verify</div>
+                    <p class="text-sm text-gray-600">All parties must match</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-2xl mb-2">🔄 Auto Balance</div>
+                    <p class="text-sm text-gray-600">Automated fee calculation</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-2xl mb-2">🆓 Free</div>
+                    <p class="text-sm text-gray-600">No hidden charges</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-2xl mb-2">💯 1% Fee</div>
+                    <p class="text-sm text-gray-600">Paid only on success</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-2xl mb-2">📲 SMS OTP</div>
+                    <p class="text-sm text-gray-600">Works on any phone</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-2xl mb-2">📊 Dashboard</div>
+                    <p class="text-sm text-gray-600">Live tracking</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-2xl mb-2">📱 M-Pesa</div>
+                    <p class="text-sm text-gray-600">Mobile money integration</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-2xl mb-2">🔗 Blockchain</div>
+                    <p class="text-sm text-gray-600">Transparent verification</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Cost Transparency -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-8">Cost Transparency</h2>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-2">Donation Amount (USD)</label>
+                    <input type="number" id="donation-amount" value="10000" onchange="calculateFees()" class="w-full px-3 py-2 border rounded-md">
+                </div>
+                <div id="fee-breakdown" class="space-y-2">
+                    <div class="flex justify-between">
+                        <span>Deposit:</span>
+                        <span id="donor-deposit">$10,000</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Conversion Fee (0.15%):</span>
+                        <span id="conversion-fee">$15</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Gas Fee:</span>
+                        <span id="gas-fee">$2</span>
+                    </div>
+                    <div class="flex justify-between font-semibold">
+                        <span>USDT Locked:</span>
+                        <span id="usdt-locked">$9,983</span>
+                    </div>
+                    <hr>
+                    <div class="flex justify-between">
+                        <span>When Disbursed:</span>
+                    </div>
+                    <div class="flex justify-between ml-4">
+                        <span>Platform Fee (1%):</span>
+                        <span id="platform-fee">KSH 7,000</span>
+                    </div>
+                    <div class="flex justify-between ml-4">
+                        <span>Conversion to KSH (1%):</span>
+                        <span id="ksh-conversion">KSH 500</span>
+                    </div>
+                    <div class="flex justify-between ml-4">
+                        <span>Withdrawal Fee:</span>
+                        <span>KSH 100</span>
+                    </div>
+                    <div class="flex justify-between font-semibold">
+                        <span>School Receives:</span>
+                        <span id="school-receives">KSH 53,800</span>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-4">All costs shown before you deposit. No surprises.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Testimonials -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-8">What They Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <p class="italic mb-4">"We've reduced our bursary leakage from 25% to 0%. Every shilling is accounted for."</p>
+                    <p class="font-semibold">— Safaricom Foundation</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <p class="italic mb-4">"The auto-balance feature saved our finance team hours of manual calculation."</p>
+                    <p class="font-semibold">— University Finance Office</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <p class="italic mb-4">"I got notified of a scholarship, applied, and received funding within a week."</p>
+                    <p class="font-semibold">— Student Beneficiary</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 10: FAQ -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <details class="bg-white p-4 rounded-lg">
+                    <summary class="cursor-pointer font-medium">Is BursaryHub free for schools and students?</summary>
+                    <p class="mt-2 text-gray-600">Yes. Schools and students pay nothing.</p>
+                </details>
+                <details class="bg-white p-4 rounded-lg">
+                    <summary class="cursor-pointer font-medium">How does three-way verification work?</summary>
+                    <p class="mt-2 text-gray-600">Student + School + Fee Master must all match.</p>
+                </details>
+                <details class="bg-white p-4 rounded-lg">
+                    <summary class="cursor-pointer font-medium">What if amounts don't match?</summary>
+                    <p class="mt-2 text-gray-600">The system blocks payment until resolved.</p>
+                </details>
+                <details class="bg-white p-4 rounded-lg">
+                    <summary class="cursor-pointer font-medium">Do students need smartphones?</summary>
+                    <p class="mt-2 text-gray-600">No. SMS OTP works on any phone.</p>
+                </details>
+                <details class="bg-white p-4 rounded-lg">
+                    <summary class="cursor-pointer font-medium">How long does disbursement take?</summary>
+                    <p class="mt-2 text-gray-600">Less than 60 seconds after approval.</p>
+                </details>
+                <details class="bg-white p-4 rounded-lg">
+                    <summary class="cursor-pointer font-medium">Is BursaryHub compliant?</summary>
+                    <p class="mt-2 text-gray-600">Yes. Includes KYC, AML & school verification.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 11: Final CTA -->
+    <section class="py-12 bg-indigo-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to eliminate bursary fraud?</h2>
+            <p class="text-indigo-100 mb-6">Join trusted donors, schools & students who trust BursaryHub.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="location.href='grantor/dashboard.html'" class="px-8 py-3 bg-white text-indigo-600 rounded-md font-semibold hover:bg-gray-100">Get Started as a Donor</button>
+                <button onclick="location.href='institution/dashboard.html'" class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-indigo-600">Register Your School</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 12: Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300">How It Works</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Pricing</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Donors</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Schools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300">About Us</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Blog</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Terms</a></li>
+                        <li><a href="#" class="hover:text-gray-300">AML/KYC</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Social</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300">Twitter</a></li>
+                        <li><a href="#" class="hover:text-gray-300">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2026 BursaryHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/auth.js"></script>
+    <script>
+        function calculateFees() {
+            const amount = parseFloat(document.getElementById('donation-amount').value) || 10000;
+            const conversionFee = amount * 0.0015;
+            const gasFee = 2;
+            const usdtLocked = amount - conversionFee - gasFee;
+            const platformFee = usdtLocked * 0.01 * 140;
+            const kshConversion = usdtLocked * 0.01 * 140;
+            const withdrawalFee = 100;
+            const schoolReceives = (usdtLocked * 140) - platformFee - withdrawalFee - kshConversion;
+
+            document.getElementById('donor-deposit').textContent = '$' + amount.toLocaleString();
+            document.getElementById('conversion-fee').textContent = '$' + conversionFee.toFixed(2);
+            document.getElementById('gas-fee').textContent = '$' + gasFee.toFixed(2);
+            document.getElementById('usdt-locked').textContent = '$' + usdtLocked.toFixed(2);
+            document.getElementById('platform-fee').textContent = 'KSH ' + platformFee.toFixed(2);
+            document.getElementById('ksh-conversion').textContent = 'KSH ' + kshConversion.toFixed(2);
+            document.getElementById('school-receives').textContent = 'KSH ' + schoolReceives.toLocaleString();
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+>>>>>>> e4099c4c7ff8ad76bb436ac4edac9d35c34f4e0a
+</body>
+</html>

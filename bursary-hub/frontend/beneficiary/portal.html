@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<<<<<<< HEAD
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Beneficiary Handshake Module | BursaryFund</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        body { background-color: #e2e8f0; }
+        .pwa-frame {
+            max-width: 450px;
+            margin: 0 auto;
+            background: var(--ifc-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            box-shadow: 0 0 25px rgba(0,0,0,0.1);
+        }
+        .wallet-card {
+            background: linear-gradient(135deg, #002f6c 0%, #0f172a 100%);
+            color: white;
+            padding: 1.75rem;
+            border-radius: var(--radius);
+        }
+        .wallet-card h3 { font-size: 2.25rem; font-weight: 800; margin-top: 0.25rem; font-variant-numeric: tabular-nums; }
+        
+        .verification-queue-item {
+            background: white;
+            border: 1px solid var(--glass-border);
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Glassmorphic Verification Overlay Modal System */
+        .modal-blur-screen {
+            position: fixed;
+            top:0; left:0; right:0; bottom:0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            z-index: 2000;
+            opacity: 0; pointer-events: none;
+            transition: var(--transition);
+        }
+        .modal-blur-screen.active-window { opacity: 1; pointer-events: auto; }
+        .modal-shell { background: white; border-radius: var(--radius); padding: 2.5rem 2rem; max-width: 380px; width: 100%; text-align: center; border: 1px solid var(--glass-border); }
+
+        .pwa-success-state { text-align: center; padding: 4rem 1rem; }
+        .pwa-success-state .icon-seal { font-size: 4.5rem; color: var(--success); margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body>
+
+    <div id="pwaInterfaceContainer" class="pwa-frame">
+        <header style="display:flex; justify-content:between; align-items:center; border-bottom:1px solid var(--glass-border); padding-bottom:0.75rem;">
+            <span style="font-weight:800; color:var(--ifc-blue); font-size:1.1rem;">BursaryFund Mobile Gateway [cite: 29]</span>
+            <a href="../home.html" style="font-size:0.75rem; background:#cbd5e1; padding:0.25rem 0.6rem; border-radius:20px; text-decoration:none; color:var(--ifc-dark); font-weight:700;">Disconnect Node</a>
+        </header>
+
+        <div class="wallet-card">
+            <span style="font-size:0.8rem; text-transform:uppercase; font-weight:700; opacity:0.85; letter-spacing:0.04em;">Sub-Allocation Credit Target [cite: 59]</span>
+            <h3 id="currentBalanceDisplay">50,000 KES</h3>
+        </div>
+
+        <div>
+            <h4 style="font-size:0.8rem; text-transform:uppercase; color:#64748b; letter-spacing:0.05em; font-weight:800; margin-bottom:0.5rem;">Pending Billing Handshakes [cite: 65]</h4>
+            <div id="queueStack">
+                <div class="verification-queue-item" id="claimInstance_1">
+                    <div>
+                        <h4 style="color:var(--ifc-blue); font-weight:800; font-size:1.05rem;">Technical University Ledger [cite: 27]</h4>
+                        <p style="font-size:0.8rem; color:#64748b; margin-top:0.15rem;">Course Mapping: COMP-SCI-Y1 • Invoiced Balance [cite: 9, 63]</p>
+                        <p style="font-size:1.35rem; font-weight:800; color:var(--ifc-dark); margin-top:0.5rem;">50,000 KES</p>
+                    </div>
+                    <button class="btn btn-primary" id="triggerPayoutVerificationBtn" style="font-size:0.85rem; padding:0.65rem 1.25rem;">Approve Payout Handshake [cite: 66]</button>
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - BursaryHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Section 1: Header -->
+    <header class="bg-white shadow-sm">
+        <div class="px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-xl font-bold text-indigo-600">BursaryHub</h1>
+                    <p class="text-gray-600">John Doe</p>
+                    <p class="text-gray-600">University of Nairobi</p>
+                </div>
+                <div class="relative">
+                    <span class="text-2xl cursor-pointer">☰</span>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">3 NEW</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="px-4 py-6 space-y-6">
+        <!-- Section 2: Available Scholarships -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="p-4">
+                <h2 class="text-lg font-semibold mb-2">🎓 NEW SCHOLARSHIP AVAILABLE</h2>
+                <p class="font-bold">Tech Scholars 2024</p>
+                <p class="text-sm text-gray-600">Covers Tuition up to 55,000 KSH</p>
+                <p class="text-sm text-gray-600">Apply by June 30, 2026</p>
+                <button onclick="applyScholarship()" class="w-full mt-4 py-2 bg-indigo-600 text-white rounded-md">APPLY NOW</button>
+            </div>
+        </div>
+
+        <!-- Section 3: My Applications -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold">My Applications</h2>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between items-center py-2 border-b">
+                    <span class="font-medium">Tech Scholars 2024</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Approved</span>
+                    <span class="font-bold">55K</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                    <span class="font-medium">Girls in STEM</span>
+                    <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-sm">Pending</span>
+                    <span class="text-gray-400">—</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Step 1 - Confirm Your Balance -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold">STEP 1: CONFIRM YOUR BALANCE</h2>
+            </div>
+            <div class="p-4">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Current Fee Owed (KSH)</label>
+                    <input type="number" id="balance-amount" value="55000" class="w-full px-3 py-2 border rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Fee Statement Upload</label>
+                    <input type="file" class="w-full px-3 py-2 border rounded-md">
+                </div>
+                <button onclick="submitBalance()" class="w-full py-2 bg-indigo-600 text-white rounded-md">SUBMIT MY BALANCE</button>
+                
+                <div id="verification-status" class="mt-4 p-4 bg-green-50 rounded-md hidden">
+                    <p class="text-green-800">
+                        ✓ You entered: 55,000 KSH<br>
+                        ✓ School says: 55,000 KSH<br>
+                        ✓ Fee master says: 55,000 KSH<br>
+                        ✅ MATCHED! Ready for approval
+                    </p>
+                </div>
+                <div id="waiting-status" class="mt-4 p-4 bg-yellow-50 rounded-md hidden">
+                    <p class="text-yellow-800">⏳ Waiting for school verification</p>
+                </div>
+                <div id="mismatch-status" class="mt-4 p-4 bg-red-50 rounded-md hidden">
+                    <p class="text-red-800">❌ MISMATCH: Your amount does not match school records.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Step 2 - Approve Payment -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold">STEP 2: APPROVE PAYMENT</h2>
+            </div>
+            <div class="p-4">
+                <div class="mb-4">
+                    <p class="text-sm"><span class="font-medium">School:</span> University of Nairobi</p>
+                    <p class="text-sm"><span class="font-medium">Amount:</span> 55,000 KSH</p>
+                    <p class="text-sm"><span class="font-medium">Coverage:</span> Tuition - Year 1 CS</p>
+                </div>
+                <button id="request-otp-btn" onclick="requestOTP()" class="w-full py-2 bg-indigo-600 text-white rounded-md mb-4">REQUEST OTP</button>
+                <div id="otp-section" class="hidden">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-1">OTP (6 digits)</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="otp-input" maxlength="6" class="flex-1 px-3 py-2 border rounded-md text-center text-2xl">
+                            <span id="countdown" class="self-center text-sm text-gray-600">5:00</span>
+                        </div>
+                    </div>
+                    <button onclick="verifyAndApprove()" class="w-full py-2 bg-green-600 text-white rounded-md">VERIFY & APPROVE</button>
+                </div>
+                <div id="approval-success" class="hidden mt-4 p-4 bg-green-50 rounded-md">
+                    <p class="text-green-800">✅ Payment approved! Funds will be sent to the school.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Payment History -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="p-4 border-b flex justify-between items-center">
+                <h2 class="text-lg font-semibold">Payment History</h2>
+                <button class="text-indigo-600 text-sm">VIEW ALL</button>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between items-center py-2 border-b">
+                    <span>May 28, 2026</span>
+                    <span>Tuition</span>
+                    <span>55,000 KSH</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Completed</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                    <span>Jan 15, 2026</span>
+                    <span>Tuition</span>
+                    <span>50,000 KSH</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Completed</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Help & Support -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="p-4">
+                <div class="flex justify-between items-center">
+                    <button class="text-indigo-600">Contact Support</button>
+                    <button class="text-indigo-600">FAQ</button>
+                    <span class="text-gray-500">v1.0</span>
+>>>>>>> e4099c4c7ff8ad76bb436ac4edac9d35c34f4e0a
+                </div>
+            </div>
+        </div>
+    </div>
+
+<<<<<<< HEAD
+    <div id="otpSignatureModal" class="modal-blur-screen">
+        <div class="modal-shell">
+            <span style="font-size: 2.5rem;">⚙️</span>
+            <h3 style="color: var(--ifc-blue); margin-top: 0.5rem; font-weight:800;">Co-Sign Settlement [cite: 66]</h3>
+            <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.25rem; line-height:1.4;">Provide the 6-digit cryptographic signature code dispatched via SMS registry mapping[cite: 28, 34].</p>
+            
+            <div style="margin: 1.75rem 0;">
+                <input type="text" id="otpInputCode" maxlength="6" class="form-input" style="text-align:center; font-size:2rem; font-weight:800; letter-spacing:0.35rem;" placeholder="000000" autocomplete="one-time-code">
+            </div>
+
+            <button id="executeSignatureBtn" class="btn btn-primary" style="width:100%;">Authorize Escrow Clearance [cite: 69]</button>
+            <button id="cancelModalBtn" class="btn" style="background:none; color:#64748b; font-size:0.85rem; text-transform:none; margin-top:0.5rem;">Abandon Execution Signature</button>
+            <div id="otpFormFeedback" class="feedback-msg"></div>
+        </div>
+    </div>
+
+=======
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/auth.js"></script>
+>>>>>>> e4099c4c7ff8ad76bb436ac4edac9d35c34f4e0a
+    <script src="portal.js"></script>
+</body>
+</html>

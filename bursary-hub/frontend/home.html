@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BursaryFund Hub | IFC Governance Benchmark</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .hero {
+            padding: 7rem 1rem 5rem 1rem;
+            background: linear-gradient(135deg, #002f6c 0%, #0f172a 100%);
+            color: white;
+            text-align: center;
+        }
+        .hero h1 { font-size: 3.25rem; font-weight: 800; letter-spacing: -0.04em; max-width: 900px; margin: 0 auto 1.5rem auto; line-height: 1.15; }
+        .hero p { max-width: 650px; margin: 0 auto 2.5rem auto; font-size: 1.25rem; color: #94a3b8; }
+        
+        .section-header { text-align: center; margin: 5rem 0 3rem 0; }
+        .section-header h2 { font-size: 2.25rem; color: var(--ifc-blue); font-weight: 800; letter-spacing: -0.02em; }
+        .section-header p { color: var(--text-muted); margin-top: 0.5rem; }
+
+        .stakeholder-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .stakeholder-card { padding: 2.5rem; transition: var(--transition); }
+        .stakeholder-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px 0 rgba(0, 47, 108, 0.08); }
+        .stakeholder-card h3 { font-size: 1.4rem; color: var(--ifc-blue); margin: 1rem 0; font-weight: 700; }
+        .stakeholder-card ul { list-style: none; margin-top: 1rem; }
+        .stakeholder-card li { margin-bottom: 0.75rem; font-size: 0.95rem; padding-left: 1.25rem; position: relative; }
+        .stakeholder-card li::before { content: "✓"; color: var(--ifc-accent); position: absolute; left: 0; font-weight: bold; }
+
+        .reviews-section { background: #f1f5f9; padding: 4rem 0; margin-top: 5rem; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .review-card { padding: 2rem; background: white; border: 1px solid var(--glass-border); border-radius: var(--radius); }
+        .quote { font-style: italic; font-size: 1rem; color: var(--ifc-dark); margin-bottom: 1.5rem; }
+        .author { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ifc-blue); }
+        .author span { display: block; font-weight: 400; color: #64748b; text-transform: none; letter-spacing: 0; }
+
+        .faq-stack { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+        details { background: white; border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 1.25rem; transition: var(--transition); }
+        summary { font-weight: 700; font-size: 1.1rem; color: var(--ifc-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: "+"; font-size: 1.5rem; color: var(--ifc-accent); }
+        details[open] summary::after { content: "−"; }
+        details p { margin-top: 1rem; color: #475569; font-size: 0.95rem; border-top: 1px solid var(--glass-border); padding-top: 1rem; }
+
+        @media (max-width: 968px) {
+            .stakeholder-grid, .reviews-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="brand">BursaryFund<span>Hub</span></a>
+            <button class="hamburger">☰</button>
+            <ul class="nav-menu">
+                <li><a href="#donors">Donors</a></li>
+                <li><a href="#beneficiaries">Beneficiaries</a></li>
+                <li><a href="#institutions">Institutions</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+                <li><a href="index.html" class="btn btn-primary" style="color:white; padding:0.5rem 1.25rem; font-size:0.85rem;">Access Hub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Automated, Transparent, and Secure Educational Funding</h1>
+            <p>Treating trust as a strict technical constraint. Shifting from obsolete document uploads to modern, cryptographic data registries[cite: 1, 6].</p>
+            <a href="index.html" class="btn btn-primary" style="background-color: var(--ifc-accent); color: white;">Initialize Access Sequences</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="section-header">
+            <h2>Ecosystem Matrix Features</h2>
+            <p>Explore distinct structural and security parameters built for each participant[cite: 20].</p>
+        </div>
+
+        <div class="stakeholder-grid">
+            <div class="glass-panel stakeholder-card" id="donors">
+                <span style="font-size:2rem;">🏛️</span>
+                <h3>For Grantors (Funders)</h3>
+                <p>Mitigate capital leakages and lower administration overhead metrics cleanly[cite: 16].</p>
+                <ul>
+                    <li>**0% fund diversion** through secure escrow isolation[cite: 17, 56].</li>
+                    <li>Automated real-time compliance reporting[cite: 17].</li>
+                    <li>Public-facing Impact Dashboard deployment[cite: 18].</li>
+                    <li>MFA-secured ledger administrative control[cite: 23].</li>
+                </ul>
+            </div>
+
+            <div class="glass-panel stakeholder-card" id="beneficiaries">
+                <span style="font-size:2rem;">📱</span>
+                <h3>For Beneficiaries (Students)</h3>
+                <p>Fast validation paths built for seamless, barrier-free mobile access[cite: 29].</p>
+                <ul>
+                    <li>Co-sign payouts instantly via SMS OTP protocols[cite: 28, 66].</li>
+                    <li>Lightweight progressive application UI framework[cite: 29].</li>
+                    <li>Direct verification utilizing Government Registry APIs[cite: 34, 47].</li>
+                    <li>Zero dependencies on data bundles or laptops[cite: 29].</li>
+                </ul>
+            </div>
+
+            <div class="glass-panel stakeholder-card" id="institutions">
+                <span style="font-size:2rem;">🏫</span>
+                <h3>For Institutions (Schools)</h3>
+                <p>Eliminate invoice fraud via verified data registry patterns[cite: 4, 6].</p>
+                <ul>
+                    <li>Publish audited, structured **Fee Masters**[cite: 8].</li>
+                    <li>Direct Oracle integration with internal university ERPs[cite: 11, 12].</li>
+                    <li>Ministry of Education whitelist protection gates[cite: 39, 49].</li>
+                    <li>Automated liquidation straight to local bank accounts[cite: 70].</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2>Audited Operations Reviews</h2>
+            <p>Verifiable reporting outcomes recorded directly from institutional deployment environments.</p>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p class="quote">"Administrative and monitoring leakages fell from 25% down to zero. The automation of reporting criteria completely optimized our annual CSR compliance pipelines." [cite: 16, 17, 18]</p>
+                <div class="author">Safaricom Foundation Trustee <span>Grantor Ecosystem Participant [cite: 16]</span></div>
+            </div>
+            <div class="review-card">
+                <p class="quote">"I approved my allocation signature directly on my phone via simple SMS. The scholarship funds cleared without needing to submit complex paperwork." [cite: 28, 29, 66]</p>
+                <div class="author">Derrick N. <span>Engineering Undergraduate [cite: 8]</span></div>
+            </div>
+            <div class="review-card">
+                <p class="quote">"Matching our internal Oracle ERP ledgers directly against the platform's Fee Master prevented billing errors and eliminated fake claims entirely." [cite: 4, 11, 12]</p>
+                <div class="author">Academic Finance Comptroller <span>Technical University Node [cite: 27]</span></div>
+            </div>
+        </div>
+
+        <div class="section-header" id="faqs">
+            <h2>Frequently Answered Metrics</h2>
+            <p>Deep-dive review of system engineering configurations.</p>
+        </div>
+
+        <div class="faq-stack">
+            <details>
+                <summary>How does the data-registry model stop invoice forgery?</summary>
+                <p>Traditional frameworks process document uploads (PDF/images), which are highly susceptible to fabrication[cite: 5]. BursaryFund Hub shifts to a data-registry model where institutions publish immutable, audited Fee Master structures before allocations occur[cite: 6, 8]. Incoming claims are programmatically validated against these guidelines, discarding any mismatched requests[cite: 10, 63].</p>
+            </details>
+            <details>
+                <summary>What specific technical prerequisites do grantors require?</summary>
+                <p>Grantor administrative nodes require standard web browsers with internet connectivity, protected by Multi-Factor Authentication (MFA) controls[cite: 23]. Financially, they must provide traditional wire transfer mechanisms (EFT/RTGS) to clear localized assets into the smart contract escrow environment[cite: 24, 56].</p>
+            </details>
+            <details>
+                <summary>Can a student route a payout to a personal account?</summary>
+                <p>No. The underlying smart contract structures are restricted to multi-party rules[cite: 44, 51]. Upon student signature validation via secure SMS OTP, funds are moved out of escrow and transferred strictly to the whitelisted institution's digital wallet and bank account[cite: 66, 69, 70].</p>
+            </details>
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
