@@ -11,5 +11,6 @@ func main() {
 	}
 	mp["Tonny"] = 27
 	fmt.Println(mp["Jack"])
+	delete(mp, "Jack")
 	fmt.Println(mp)
 }
