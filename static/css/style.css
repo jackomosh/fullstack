@@ -1,0 +1,55 @@
+:root {
+    --primary: #2563eb;
+    --accent: #7c3aed;
+    --bg-dark: #0f172a;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
+
+/* Fixed Professional Navbar */
+nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--text-main); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+
+/* Hero Slider */
+.hero-slider {
+    height: 80vh; margin-top: 60px; position: relative; overflow: hidden;
+}
+
+.slide {
+    position: absolute; inset: 0; opacity: 0; transition: 1s ease-in-out;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+}
+
+.slide.active { opacity: 1; }
+
+.slide-content h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem; }
+
+/* Responsive Grid */
+.section { padding: 5rem 10%; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+
+.card {
+    background: var(--glass); border: 1px solid var(--border);
+    padding: 2rem; border-radius: 12px; transition: 0.3s;
+}
+
+.card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Mobile would use a hamburger menu in production */
+}

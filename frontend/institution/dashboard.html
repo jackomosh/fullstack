@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>Institutional Settlement Control | BursaryFund</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .split-deck { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        @media(max-width: 950px) { .split-deck { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../home.html" class="brand">BursaryFund<span>Hub</span></a>
+            <a href="../home.html" style="text-decoration:none; font-weight:700; color:#64748b; font-size:0.9rem;">Disconnect School Ledger [cite: 39]</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h2 style="color: var(--ifc-blue); font-weight: 800;">Institutional Billing Deck</h2>
+            <p style="color: #64748b;">Configure base billing structures and verify active digital claims[cite: 8, 63].</p>
+        </header>
+
+        <div class="split-deck">
+            <div class="glass-panel" style="padding: 2.5rem;">
+                <h3 style="color: var(--ifc-blue); margin-bottom: 0.5rem; font-weight:800;">Panel A: Fee Master Structure [cite: 8]</h3>
+                <p style="font-size: 0.85rem; color:#64748b; margin-bottom:1.5rem;">Publish the official, audited academic fee configuration to prevent client calculation forgery[cite: 6, 8].</p>
+                
+                <form id="feeMasterForm">
+                    <div class="form-group">
+                        <label for="courseIdentifier">Course Code Key Profile</label>
+                        <input type="text" id="courseIdentifier" class="form-input" placeholder="e.g., COMP-SCI-Y1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tuitionCost">Tuition Fee Metric (KES)</label>
+                        <input type="number" id="tuitionCost" class="form-input" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="accommodationCost">Accommodation Allotment (KES)</label>
+                        <input type="number" id="accommodationCost" class="form-input" min="0" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Commit Registry Parameters [cite: 8]</button>
+                </form>
+                <div id="masterFeedback" class="feedback-msg"></div>
+            </div>
+
+            <div class="glass-panel" style="padding: 2.5rem;">
+                <h3 style="color: var(--ifc-blue); margin-bottom: 0.5rem; font-weight:800;">Panel B: Digital Payment Claim [cite: 63]</h3>
+                <p style="font-size: 0.85rem; color:#64748b; margin-bottom:1.5rem;">Generate individual student claims. Systems validate entry totals directly against Fee Master rules[cite: 10, 63].</p>
+                
+                <form id="billingClaimForm">
+                    <div class="form-group">
+                        <label for="claimTargetStudent">Target Student Registration Number [cite: 27]</label>
+                        <input type="text" id="claimTargetStudent" class="form-input" placeholder="e.g., REG-1234" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="claimTargetCourse">Target Course Code</label>
+                        <input type="text" id="claimTargetCourse" class="form-input" placeholder="e.g., COMP-SCI-Y1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="claimAggregatedTotal">Aggregate Billing Request Total (KES)</label>
+                        <input type="number" id="claimAggregatedTotal" class="form-input" placeholder="System running cross-checks..." required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Broadcast Claim Package [cite: 63]</button>
+                </form>
+                <div id="claimFeedback" class="feedback-msg"></div>
+=======
+    <title>School Dashboard - BursaryHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Section 1: Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div>
+                    <h1 class="text-xl font-bold text-indigo-600">BursaryHub | SCHOOL DASHBOARD</h1>
+                    <p class="text-sm text-gray-600">University of Nairobi</p>
+                    <p class="text-sm text-gray-600">Registration: EDU-KE-2024-001 | Status: ✅ VERIFIED</p>
+                </div>
+                <div class="flex items-center">
+                    <span class="relative">
+                        <span class="text-2xl cursor-pointer">🔔</span>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">2</span>
+                    </span>
+                    <button onclick="logout()" class="ml-4 px-4 py-2 text-gray-600 hover:text-gray-800">Profile ▼</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Section 2: Summary Statistics -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-3xl font-bold text-indigo-600 mb-1">3,450</div>
+                <div class="text-gray-600">Total Students</div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-3xl font-bold text-indigo-600 mb-1">KSH 1,280,000</div>
+                <div class="text-gray-600">Pending Claims</div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-3xl font-bold text-indigo-600 mb-1">KSH 4,200,000</div>
+                <div class="text-gray-600">Completed Payments</div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-3xl font-bold text-indigo-600 mb-1">12</div>
+                <div class="text-gray-600">Active Scholarships</div>
+            </div>
+        </div>
+
+        <!-- Section 3: Fee Master Management -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b">
+                <h2 class="text-lg font-semibold">Fee Master Management</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Academic Year</label>
+                        <select class="w-full px-3 py-2 border rounded-md">
+                            <option>2025-2026</option>
+                            <option>2024-2025</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Course</label>
+                        <select class="w-full px-3 py-2 border rounded-md">
+                            <option>Computer Science</option>
+                            <option>Information Technology</option>
+                            <option>Business</option>
+                            <option>Engineering</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Year</label>
+                        <select class="w-full px-3 py-2 border rounded-md">
+                            <option>1st Year</option>
+                            <option>2nd Year</option>
+                            <option>3rd Year</option>
+                            <option>4th Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Tuition (KSH)</label>
+                        <input type="number" id="tuition" value="55000" class="w-full px-3 py-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Accommodation (KSH)</label>
+                        <input type="number" id="accommodation" value="25000" class="w-full px-3 py-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Food (KSH)</label>
+                        <input type="number" id="food" value="15000" class="w-full px-3 py-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Transport (KSH)</label>
+                        <input type="number" id="transport" value="5000" class="w-full px-3 py-2 border rounded-md">
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="bulkUpdateFees()" class="px-4 py-2 bg-indigo-600 text-white rounded-md">Bulk Update</button>
+                    <button class="px-4 py-2 border rounded-md">Upload CSV</button>
+                    <button onclick="saveFeeMaster()" class="px-4 py-2 bg-green-600 text-white rounded-md">Save Fee Master</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Auto-Balance Preview -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b">
+                <h2 class="text-lg font-semibold">Auto-Balance Preview</h2>
+            </div>
+            <div class="p-6">
+                <p class="text-sm text-gray-600 mb-4">Formula: New Balance = Previous Unpaid + (New Fee - Paid to Date)</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-2 text-left">Student</th>
+                                <th class="px-4 py-2 text-left">Old Balance</th>
+                                <th class="px-4 py-2 text-left">Paid to Date</th>
+                                <th class="px-4 py-2 text-left">New Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-4 py-2">John Doe</td>
+                                <td class="px-4 py-2">KSH 50,000</td>
+                                <td class="px-4 py-2">KSH 0</td>
+                                <td class="px-4 py-2">KSH 55,000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2">Mary Smith</td>
+                                <td class="px-4 py-2">KSH 30,000</td>
+                                <td class="px-4 py-2">KSH 20,000</td>
+                                <td class="px-4 py-2">KSH 35,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex gap-2 mt-4">
+                    <button class="px-4 py-2 bg-indigo-600 text-white rounded-md">Apply to All Students</button>
+                    <button class="px-4 py-2 border rounded-md">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Student Balance Table -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b flex justify-between items-center">
+                <h2 class="text-lg font-semibold">Student Balances</h2>
+                <div class="flex gap-2">
+                    <input type="text" placeholder="Search Student..." class="px-3 py-1 border rounded-md">
+                    <button class="px-4 py-2 border rounded-md">Export CSV</button>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">Name</th>
+                            <th class="px-4 py-2 text-left">Reg No</th>
+                            <th class="px-4 py-2 text-left">Course</th>
+                            <th class="px-4 py-2 text-left">Year</th>
+                            <th class="px-4 py-2 text-left">Tuition</th>
+                            <th class="px-4 py-2 text-left">Total</th>
+                            <th class="px-4 py-2 text-left">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="px-4 py-2">John Doe</td>
+                            <td class="px-4 py-2">CS001</td>
+                            <td class="px-4 py-2">CS</td>
+                            <td class="px-4 py-2">1</td>
+                            <td class="px-4 py-2">KSH 55,000</td>
+                            <td class="px-4 py-2">KSH 55K</td>
+                            <td class="px-4 py-2"><button class="text-indigo-600 hover:underline">Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 6: Three-Way Verification -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b">
+                <h2 class="text-lg font-semibold">Three-Way Verification</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Student ID/Reg Number</label>
+                        <div class="flex gap-2">
+                            <input type="text" class="flex-1 px-3 py-2 border rounded-md">
+                            <button class="px-4 py-2 bg-indigo-600 text-white rounded-md">Load</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Key in Amount (KSH)</label>
+                        <input type="number" class="w-full px-3 py-2 border rounded-md">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Upload Invoice</label>
+                    <input type="file" class="w-full px-3 py-2 border rounded-md">
+                </div>
+                <div class="mb-4 p-4 bg-green-50 rounded-md">
+                    <p class="text-green-800">✅ Verification passed. Ready for student OTP approval.</p>
+                </div>
+                <button class="px-6 py-2 bg-indigo-600 text-white rounded-md">Submit Verification</button>
+            </div>
+        </div>
+
+        <!-- Section 7: Digital Payment Claims -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b flex justify-between items-center">
+                <h2 class="text-lg font-semibold">Digital Payment Claims</h2>
+                <button onclick="openNewClaimModal()" class="px-4 py-2 bg-indigo-600 text-white rounded-md">+ New Claim</button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">Student</th>
+                            <th class="px-4 py-2 text-left">Coverage</th>
+                            <th class="px-4 py-2 text-left">Amount</th>
+                            <th class="px-4 py-2 text-left">Student Signed</th>
+                            <th class="px-4 py-2 text-left">3-Way Match</th>
+                            <th class="px-4 py-2 text-left">Status</th>
+                            <th class="px-4 py-2 text-left">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="px-4 py-2">John Doe</td>
+                            <td class="px-4 py-2">Tuition</td>
+                            <td class="px-4 py-2">KSH 55,000</td>
+                            <td class="px-4 py-2">✅ OTP Verified</td>
+                            <td class="px-4 py-2">✅</td>
+                            <td class="px-4 py-2"><span class="px-2 py-1 bg-green-100 text-green-800 rounded">Completed</span></td>
+                            <td class="px-4 py-2"><button class="text-indigo-600 hover:underline">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 8: Recent Disbursements -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b flex justify-between items-center">
+                <h2 class="text-lg font-semibold">Recent Disbursements</h2>
+                <button class="text-indigo-600 hover:underline">View All</button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">Date</th>
+                            <th class="px-4 py-2 text-left">Student</th>
+                            <th class="px-4 py-2 text-left">Amount</th>
+                            <th class="px-4 py-2 text-left">Tx Hash</th>
+                            <th class="px-4 py-2 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="px-4 py-2">May 28</td>
+                            <td class="px-4 py-2">John Doe</td>
+                            <td class="px-4 py-2">KSH 55,000</td>
+                            <td class="px-4 py-2">0xabc...123</td>
+                            <td class="px-4 py-2"><span class="px-2 py-1 bg-green-100 text-green-800 rounded">Completed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 9: Bank Account Settings -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b">
+                <h2 class="text-lg font-semibold">Bank Account Settings</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Bank Name</label>
+                        <input type="text" value="Equity Bank" class="w-full px-3 py-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Account Name</label>
+                        <input type="text" value="UoN Fees" class="w-full px-3 py-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Account Number</label>
+                        <input type="text" value="0123456789" class="w-full px-3 py-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Bank Code</label>
+                        <input type="text" value="068" class="w-full px-3 py-2 border rounded-md">
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-4">
+                    <button class="px-4 py-2 bg-indigo-600 text-white rounded-md">Save</button>
+                    <button class="px-4 py-2 border rounded-md">Test Transfer</button>
+                </div>
+>>>>>>> e4099c4c7ff8ad76bb436ac4edac9d35c34f4e0a
+            </div>
+        </div>
+    </div>
+
+<<<<<<< HEAD
+    <script src="../assets/js/main.js"></script>
+=======
+    <!-- New Claim Modal -->
+    <div id="new-claim-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg max-w-md w-full">
+            <h3 class="text-lg font-semibold mb-4">Create New Claim</h3>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Student Search</label>
+                    <input type="text" class="w-full px-3 py-2 border rounded-md">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Coverage</label>
+                    <select class="w-full px-3 py-2 border rounded-md">
+                        <option>Tuition</option>
+                        <option>Accommodation</option>
+                        <option>Food</option>
+                        <option>Transport</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Amount (KSH)</label>
+                    <input type="number" value="55000" class="w-full px-3 py-2 border rounded-md">
+                </div>
+            </div>
+            <div class="flex gap-2 mt-6">
+                <button onclick="closeNewClaimModal()" class="px-4 py-2 border rounded-md">Cancel</button>
+                <button onclick="createClaim()" class="px-4 py-2 bg-indigo-600 text-white rounded-md">Create Claim</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/auth.js"></script>
+>>>>>>> e4099c4c7ff8ad76bb436ac4edac9d35c34f4e0a
+    <script src="app.js"></script>
+</body>
+</html>
