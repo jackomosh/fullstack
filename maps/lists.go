@@ -17,4 +17,5 @@ func main() {
 	fmt.Println(mp["Jack"])
 	delete(mp, "Jack")
 	fmt.Println(mp)
+	fmt.Println(len(mp))
 }
