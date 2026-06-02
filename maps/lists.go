@@ -9,6 +9,7 @@ func main() {
 		"Leon":21,
 		"James":30,
 	}
+	mp["Tonny"] = 27
 	fmt.Println(mp["Jack"])
 	fmt.Println(mp)
 }
