@@ -9,6 +9,10 @@ func main() {
 		"Leon":21,
 		"James":30,
 	}
+
+	val, ok := mp["Hike"]
+		fmt.Println(val, ok)
+	
 	mp["Tonny"] = 27
 	fmt.Println(mp["Jack"])
 	delete(mp, "Jack")
