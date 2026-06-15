@@ -3,32 +3,25 @@ package api
 import (
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"time"
+	"os"
 )
 
-const BaseURL = "https://groupietracker.herokuapp.com/api"
-
-type Client struct {
-	HTTPClient *http.Client
-}
+type Client struct{}
 
 func NewClient() *Client {
-	return &Client{
-		HTTPClient: &http.Client{Timeout: 10 * time.Second},
-	}
+	return &Client{}
 }
 
-// FetchData requests artists and relations, merging them into a UnifiedRegistry cache map.
+// FetchData aggregates files from the disk cache directly
 func (c *Client) FetchData() (*UnifiedRegistry, error) {
 	artists, err := c.FetchArtists()
 	if err != nil {
-		return nil, fmt.Errorf("artists fetch error: %w", err)
+		return nil, fmt.Errorf("offline artists load failed: %w", err)
 	}
 
 	relationsMap, err := c.FetchRelations()
 	if err != nil {
-		return nil, fmt.Errorf("relations fetch error: %w", err)
+		return nil, fmt.Errorf("offline relations load failed: %w", err)
 	}
 
 	return &UnifiedRegistry{
@@ -38,36 +31,26 @@ func (c *Client) FetchData() (*UnifiedRegistry, error) {
 }
 
 func (c *Client) FetchArtists() ([]Artist, error) {
-	resp, err := c.HTTPClient.Get(BaseURL + "/artists")
+	fileData, err := os.ReadFile("data/artists.json")
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("unexpected status: %d", resp.StatusCode)
-	}
 
 	var artists []Artist
-	if err := json.NewDecoder(resp.Body).Decode(&artists); err != nil {
+	if err := json.Unmarshal(fileData, &artists); err != nil {
 		return nil, err
 	}
 	return artists, nil
 }
 
 func (c *Client) FetchRelations() (map[int]Relation, error) {
-	resp, err := c.HTTPClient.Get(BaseURL + "/relation")
+	fileData, err := os.ReadFile("data/relations.json")
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("unexpected status: %d", resp.StatusCode)
-	}
 
 	var wrapper RelationIndex
-	if err := json.NewDecoder(resp.Body).Decode(&wrapper); err != nil {
+	if err := json.Unmarshal(fileData, &wrapper); err != nil {
 		return nil, err
 	}
 

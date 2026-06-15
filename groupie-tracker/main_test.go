@@ -4,56 +4,57 @@ import (
 	"html/template"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"groupie-tracker/api"
 )
 
 func init() {
-	// Initialize minimal runtime mocks to run isolated pipeline checks safely
+	// Inject full test mocks to protect execution bounds
 	registry = &api.UnifiedRegistry{
 		Artists: []api.Artist{
-			{ID: 1, Name: "Pink Floyd", Members: []string{"Syd", "Roger"}, CreationDate: 1965},
+			{ID: 1, Name: "Queen", Members: []string{"Freddie Mercury", "Brian May"}, CreationDate: 1970, FirstAlbum: "13-07-1973"},
+			{ID: 2, Name: "Gorillaz", FirstAlbum: "26-03-2001"},
 		},
 		Relations: map[int]api.Relation{
-			1: {ID: 1, DatesLocations: map[string][]string{"london-uk": {"10-10-2026"}}},
+			1: {ID: 1, DatesLocations: map[string][]string{"london-uk": {"20-08-2019"}}},
 		},
 	}
-	templates = template.Must(template.New("index.html").Parse(`{{range .}}<h1>{{.Name}}</h1>{{end}}`))
-	_, _ = templates.New("details.html").Parse(`<h2>{{.Artist.Name}}</h2>`)
+	templates = template.Must(template.New("index.html").Parse(`{{range .}}<div>{{.Name}}</div>{{end}}`))
+	_, _ = templates.New("details.html").Parse(`<h1>{{.Artist.Name}}</h1>`)
 }
 
-func TestHomeHandler(t *testing.T) {
-	req := httptest.NewRequest("GET", "/", nil)
-	rr := httptest.NewRecorder()
-
-	homeHandler(rr, req)
-
-	if rr.Code != http.StatusOK {
-		t.Errorf("Expected status code 200, got %d", rr.Code)
-	}
-}
-
-func TestArtistDetailsHandler(t *testing.T) {
+func TestRouterScenarios(t *testing.T) {
 	tests := []struct {
-		name       string
-		queryID    string
-		wantStatus int
+		name           string
+		method         string
+		url            string
+		expectedStatus int
 	}{
-		{"Valid Query Reference", "1", http.StatusOK},
-		{"Out-of-Bounds Identifier Match", "99", http.StatusNotFound},
-		{"Malformed Request Parameters", "abc", http.StatusBadRequest},
+		{"Valid Home GET Request", "GET", "/", http.StatusOK},
+		{"Invalid URL Path 404 Protected", "GET", "/invalid-route-path", http.StatusNotFound},
+		{"Valid Details Parameter Path", "GET", "/artist?id=1", http.StatusOK},
+		{"Missing Artist Profile 404 Matching", "GET", "/artist?id=999", http.StatusNotFound},
+		{"Malformed Request Parameters 400 Matching", "GET", "/artist?id=badparam", http.StatusBadRequest},
+		{"Valid Search REST Hook Input", "GET", "/api/search?q=Queen", http.StatusOK},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			req := httptest.NewRequest("GET", "/artist?id="+tt.queryID, nil)
+			req := httptest.NewRequest(tt.method, tt.url, nil)
 			rr := httptest.NewRecorder()
 
-			artistDetailsHandler(rr, req)
+			if tt.url == "/" || strings.HasPrefix(tt.url, "/invalid") {
+				homeHandler(rr, req)
+			} else if strings.HasPrefix(tt.url, "/artist") {
+				artistDetailsHandler(rr, req)
+			} else if strings.HasPrefix(tt.url, "/api/search") {
+				apiSearchHandler(rr, req)
+			}
 
-			if rr.Code != tt.wantStatus {
-				t.Errorf("Expected status %d, got %d", tt.wantStatus, rr.Code)
+			if rr.Code != tt.expectedStatus {
+				t.Errorf("%s failed: expected HTTP code %d, received %d", tt.name, tt.expectedStatus, rr.Code)
 			}
 		})
 	}

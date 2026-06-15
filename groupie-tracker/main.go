@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"encoding/json"
 	"html/template"
 	"log"
 	"net/http"
@@ -14,7 +15,7 @@ import (
 	"syscall"
 	"time"
 
-	"groupie-trackers/api"
+	"groupie-tracker/api"
 )
 
 var (
