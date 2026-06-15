@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-const BaseURL = "https://groupietrackers.herokuapp.com/api"
+const BaseURL = "https://groupietracker.herokuapp.com/api"
 
 type Client struct {
 	HTTPClient *http.Client
