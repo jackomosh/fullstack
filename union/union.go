@@ -6,24 +6,20 @@ import (
 )
 
 func main() {
-
 	if len(os.Args) != 3 {
-		fmt.Printf("\n")
+		fmt.Println("Invalid Arguments, Expecting two arguments")
 		return
 	}
-
 	str1 := os.Args[1]
 	str2 := os.Args[2]
-
 	combined := str1 + str2
-	newStr := ""
-
+	seen := make(map[rune]bool)
+	var result []rune
 	for _, ch := range combined {
-		if string(ch) != str1 {
-			newStr += string(ch)
+		if !seen[ch] {
+			seen[ch] = true
+			result = append(result, ch)
 		}
 	}
-
-	fmt.Println(newStr)
-
+	fmt.Println(string(result))
 }
