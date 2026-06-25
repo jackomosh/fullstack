@@ -1,13 +1,13 @@
 package main
 
 import (
-	"os"
 	"fmt"
+	"os"
 )
 
 func main() {
 	if len(os.Args) != 3 {
-		fmt.Println("Invalid Arguments, Expecting two arguments")
+		fmt.Printf("\n")
 		return
 	}
 	str1 := os.Args[1]
